@@ -8,6 +8,14 @@ package herencia;
  *
  * @author USER
  */
-public class Trabajador {
+public class Trabajador extends Persona{
+    private String numeroTrabajador;
+    private double salario;
+    public Trabajador(String numeroTrabajador, double salario, String nombre, Integer edad, String apellido){
+        this.numeroTrabajador= numeroTrabajador;
+        this.salario= salario;
+        super(nombre, edad, apellido);
+        
+    }
     
 }

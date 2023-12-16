@@ -9,14 +9,20 @@ package herencia;
  * @author USER
  */
 public class Persona {
-private String nombre;    
-private Integer  edad;
-private String apellido;
-public Persona (String nombre, Integer edad, String apellido){
-    this.nombre= nombre;
-    this.apellido= apellido;
-    this.edad= edad;
-}
+
+    @Override
+    public String toString() {
+        return "Persona{" + "nombre=" + nombre + ", edad=" + edad + ", apellido=" + apellido + '}';
+    }
+    private String nombre;
+    private Integer edad;
+    private String apellido;
+
+    public Persona(String nombre, Integer edad, String apellido) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.edad = edad;
+    }
 
     public String getNombre() {
         return nombre;

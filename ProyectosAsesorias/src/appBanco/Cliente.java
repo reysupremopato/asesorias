@@ -16,6 +16,11 @@ public class Cliente extends Persona {
     private int saldo;
     private int id;
 
+    public Cliente(int edad, String nombre) {
+        super(edad, nombre);
+
+    }
+
     public Cliente(int edad, String nombre, String numeroCuenta, int saldo) {
         super(edad, nombre);
         this.numeroCuenta = numeroCuenta;
@@ -65,6 +70,17 @@ public class Cliente extends Persona {
 
         clientes.forEach(clienteActual -> {
             System.out.println(clienteActual.getId() + " - " + clienteActual.getNombre());
+        });
+    }
+
+    public Cliente consultarPorId(List<Cliente> clientes, int id) {
+        int indiseCliente = 0;
+
+        clientes.forEach(clienteActual -> {
+            if (id == clienteActual.getId()) {
+                Cliente cliente = clienteActual();
+
+            }
         });
     }
 

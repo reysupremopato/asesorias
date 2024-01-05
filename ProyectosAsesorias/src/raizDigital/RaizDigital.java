@@ -12,7 +12,7 @@ public class RaizDigital {
 
     public static void main(String[] args) {
         RaizDigital raizDigital = new RaizDigital();
-        raizDigital.calcularRaizDigital(10);
+        raizDigital.calcularRaizDigital(999);
 
     }
 
@@ -29,12 +29,12 @@ public class RaizDigital {
     }
 
     public void calcularRaizDigital(int numero) {
-        if (sumaDigitos(numero) <= 9 ) {
-            System.out.println("la raiz digital es ");
-        } else {
-
-        }
-
+        int raizDigital= sumaDigitos(numero);
+        
+while(raizDigital > 9){        
+        raizDigital= sumaDigitos(raizDigital);
     }
-
+        System.out.println("la raiz digital es " + raizDigital);
+}
+    
 }

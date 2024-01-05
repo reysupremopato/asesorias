@@ -21,10 +21,11 @@ public class Cliente extends Persona {
 
     }
 
-    public Cliente(int edad, String nombre, String numeroCuenta, int saldo) {
+    public Cliente(int edad, String nombre, String numeroCuenta, int saldo, int id) {
         super(edad, nombre);
         this.numeroCuenta = numeroCuenta;
         this.saldo = saldo;
+        this.id = id;
     }
 
     public String getNumeroCuenta() {
@@ -45,15 +46,21 @@ public class Cliente extends Persona {
 
     public List<Cliente> registrarClientes(List<Cliente> clientes) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("ingrese la nombre");
+        System.out.println("ingrese el nombre");
         String nombre = scanner.nextLine();
         System.out.println("ingrese la edad");
         int edad = scanner.nextInt();
+        scanner = new Scanner(System.in);
         System.out.println("ingrese su numero de Cuenta");
         String numeroCuenta = scanner.nextLine();
+        scanner = new Scanner(System.in);
         System.out.println("ingrese su saldo");
         int saldo = scanner.nextInt();
-        Cliente clienteaRegistrar = new Cliente(edad, nombre, numeroCuenta, saldo);
+        scanner = new Scanner(System.in);
+        System.out.println("ingrese el identificador");
+        int id = scanner.nextInt();
+
+        Cliente clienteaRegistrar = new Cliente(edad, nombre, numeroCuenta, saldo, id);
         clientes.add(clienteaRegistrar);
         return clientes;
     }
@@ -74,14 +81,69 @@ public class Cliente extends Persona {
     }
 
     public Cliente consultarPorId(List<Cliente> clientes, int id) {
-        int indiseCliente = 0;
 
-        clientes.forEach(clienteActual -> {
-            if (id == clienteActual.getId()) {
-                Cliente cliente = clienteActual();
-
+        for (int i = 0; i < clientes.size(); i++) {
+            Cliente clienteActual = clientes.get(i);
+            if (clienteActual.getId() == id) {
+                return clienteActual;
             }
-        });
+        }
+        return null;
     }
 
+    public List<Cliente> eliminarClientePorId(List<Cliente> clientes) {
+        Scanner scanner = new Scanner(System.in);
+        mostrarListaClientes(clientes);
+        System.out.println("ingrese el id del cliente que quiere remover");
+        int idAeliminar = scanner.nextInt();
+        for (int i = 0; i < clientes.size(); i++) {
+            if (idAeliminar == clientes.get(i).getId()) {
+                clientes.remove(i);
+                break;
+            }
+
+        }
+        return clientes;
+
+    }
+
+    @Override
+    public String toString() {
+        String faltante = getNombre() + " " + getEdad();
+
+        return faltante + "Cliente{" + "numeroCuenta=" + numeroCuenta + ", saldo=" + saldo + ", id=" + id + '}';
+    }
+
+    public void mostrarInformacionClientes(List<Cliente> clientes) {
+        mostrarListaClientes(clientes);
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("ingrese el id del usuario que desea ver la informacion");
+        int id = scanner.nextInt();
+        for (int i = 0; i < clientes.size(); i++) {
+            if (id == clientes.get(i).getId()) {
+                System.out.println(clientes.get(i).toString());
+                break;
+            }
+
+        }
+    }
+
+    public List<Cliente> modificarSaldo(List<Cliente> clientes) {
+        mostrarListaClientes(clientes);
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("ingrese el id del cliente que desea  modificar su saldo");
+        int id = scanner.nextInt();
+
+        for (int i = 0; i < clientes.size(); i++) {
+            if (id == clientes.get(i).getId()) {
+                            scanner = new Scanner(System.in);
+            System.out.println("ingrese el nuevo saldo");
+            int nuevoSaldo = scanner.nextInt();
+                clientes.get(i).setSaldo(nuevoSaldo);
+break;
+            }
+
+        }
+        return clientes;
+    }
 }

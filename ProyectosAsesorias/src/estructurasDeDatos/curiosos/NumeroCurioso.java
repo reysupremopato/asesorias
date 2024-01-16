@@ -24,6 +24,11 @@ public class NumeroCurioso {
 
     }
 
+    public NumeroCurioso(int numero, int cuadrado) {
+this.numero=  numero;
+this.cuadrado= cuadrado;
+    }
+
     public int getNumero() {
         return numero;
     }

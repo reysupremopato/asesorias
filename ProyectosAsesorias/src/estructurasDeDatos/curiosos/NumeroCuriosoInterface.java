@@ -16,6 +16,6 @@ public interface NumeroCuriosoInterface {
 
     public boolean esCurioso(int numero);
 
-    public void mostrarCurioso();
-
+    public void mostrarCurioso(int numero);
+public void mostrarCuriosos(int inicio, int fin);
 }

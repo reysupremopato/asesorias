@@ -3,7 +3,7 @@ package estructurasDeDatos.divisores;
 import java.util.*;
 
 public class NumeroPerfectoLogica implements NumeroPerfectoInterface {
-    List<NumeroPerfecto> numerosPerfectos = new ArrayList();
+    List<NumeroPerfecto> numerosPerfectos = new ArrayList<>();
 
     @Override
     public int sumarDivisores(int numero) {
@@ -36,7 +36,17 @@ public class NumeroPerfectoLogica implements NumeroPerfectoInterface {
     }
 
     @Override
-    public void mostrarNumerosPerfectos() {
+    public void mostrarNumerosPerfectos(int numero) {
+
+        for (int i = 0; i < numero; i++) {
+            if (esPerfecto(i)) {
+                numerosPerfectos.add(new NumeroPerfecto(i, sumarDivisores(i)));
+            }
+
+        }
+        numerosPerfectos.forEach(perfectoActual -> {
+            mostrarNumeroPerfecto(perfectoActual.getNumero());
+        });
 
     }
 

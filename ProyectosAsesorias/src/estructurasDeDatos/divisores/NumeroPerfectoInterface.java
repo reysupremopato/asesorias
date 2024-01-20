@@ -8,6 +8,6 @@ public interface NumeroPerfectoInterface {
 
     public void mostrarNumeroPerfecto(int numero);
 
-    public void mostrarNumerosPerfectos();
+    public void mostrarNumerosPerfectos(int numero);
 
 }
